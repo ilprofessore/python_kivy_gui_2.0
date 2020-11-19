@@ -1,0 +1,119 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<ScreenOne>:
+    python_name: kivy_name
+    python_domain: kivy_domain
+    python_major: kivy_major
+    on_enter: root.clear_screen
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'dream.jpg'
+    FloatLayout:
+        pos: 0, 0
+        size: root.width, root.height
+        Label:
+            text: 'code of __ilprofessore'
+            size_hint: 0.1, 0.1
+            pos_hint: {'x': 0.43, 'y': 0.9}
+            font_size: 36
+            color: 0, 0, 1, 1
+        Label:
+            text: 'what is your name?'
+            size_hint: 0.1, 0.1
+            pos_hint: {'x': 0.15, 'y': 0.7}
+            color: 1, 0, 0, 1
+            bold: True
+        TextInput:
+            id: kivy_name
+            hint_text: 'zain ul abideen'
+            pos_hint: {'x': 0.4, 'y':0.7}
+            size_hint: 0.5, 0.1
+            multiline: False
+        Label:
+            text: 'what is your domain?'
+            size_hint: 0.1, 0.1
+            pos_hint: {'x': 0.15, 'y': 0.5}
+            color: 1, 0, 0, 1
+            bold: True
+        TextInput:
+            id: kivy_domain
+            hint_text: 'space science'
+            pos_hint: {'x': 0.4, 'y':0.5}
+            size_hint: 0.5, 0.1
+            multiline: False
+        Label:
+            text: 'what is your major?'
+            size_hint: 0.1, 0.1
+            pos_hint: {'x': 0.15, 'y': 0.3}
+            color: 1, 0, 0, 1
+            bold: True
+        TextInput:
+            id: kivy_major
+            hint_text: 'astrodynamics'
+            pos_hint: {'x': 0.4, 'y':0.3}
+            size_hint: 0.5, 0.1
+            multiline: False
+        Button:
+            text: 'submit'
+            pos_hint: {'x': 0.1, 'y': 0.1}
+            size_hint: 0.5, 0.1
+            color: 1, 1, 1, 1
+            font_size: 24
+            on_release:
+                root.manager.transition = FadeTransition(duration = 0.3)
+                root.manager.current = 'screen2'
+                root.but_prs()
+        Button:
+            text: 'exit'
+            pos_hint: {'x': 0.7, 'y': 0.1}
+            size_hint: 0.2, 0.1
+            color: 1, 1, 1, 1
+            font_size: 24
+            on_release: quit()
+
+
+<ScreenTwo>:
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'dream.jpg'
+    python_input: screen_2_label
+    on_enter: root.button_pressed()
+    FloatLayout:
+        pos: 0, 0
+        size: root.width, root.height
+        TextInput:
+            id: screen_2_label
+            hint_text: 'info will appear here'
+            size_hint: 0.7, 0.4
+            pos_hint: {'x': 0.16, 'y': 0.5}
+            font_size: 36
+            readonly: True
+        Button:
+            text: 'Go Back'
+            size_hint: 0.5, 0.25
+            pos_hint: {'x': 0.246, 'y': 0.2}
+            font_size: 24
+            color: 0, 1, 0, 1
+            on_release:
+                root.manager.current = 'screen1'
+                root.clr_scrn
+
+<Manager>:
+    id: screen_manager
+
+    screen_one: screen_one
+    screen_two: screen_two
+
+    ScreenOne:
+        id: screen_one
+        name: 'screen1'
+        manager: screen_manager
+
+    ScreenTwo:
+        id: screen_two
+        name: 'screen2'
+        manager: screen_manager
