@@ -1,7 +1,7 @@
 # a working prototype has been finally created !
 
 from kivy.app import App
-from kivy.uix.label import Label
+# from kivy.uix.label import Label ;this import was not used
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
