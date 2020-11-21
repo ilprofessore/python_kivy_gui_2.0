@@ -8,6 +8,7 @@ from kivy.lang import Builder
 
 Builder.load_file("design.kv")
 
+# focus_next ;this shall be used next time.
 
 class ScreenOne(Screen):
     python_name = ObjectProperty(None)
